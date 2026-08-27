@@ -1,0 +1,21 @@
+@layer base {
+	body {
+		@apply overflow-hidden bg-bg-subtle;
+	}
+
+	#app {
+		height: 100dvh;
+	}
+
+	@media (display-mode: standalone) {
+		#app {
+			height: 100lvh;
+		}
+	}
+
+	a,
+	button,
+	[role='button'] {
+		touch-action: manipulation;
+	}
+}

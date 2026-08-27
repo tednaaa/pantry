@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import { useColorMode } from '@vueuse/core';
+import { ConfirmDialog, Toaster } from 'shonk-ui';
+import { RouterView } from 'vue-router';
+import { BottomNav } from '@/widgets/bottom-nav';
+
+useColorMode();
+</script>
+
+<template>
+  <div class="mx-auto flex h-full w-full max-w-md flex-col overflow-hidden bg-bg-surface pt-[env(safe-area-inset-top)]">
+    <RouterView />
+
+    <div class="shrink-0">
+      <div id="bottom-dock" />
+
+      <BottomNav />
+    </div>
+  </div>
+
+  <ConfirmDialog />
+  <Toaster />
+</template>
