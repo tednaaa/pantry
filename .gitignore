@@ -2,8 +2,6 @@
 devenv.local.nix
 devenv.local.yaml
 
-.local/
-
 node_modules/
 
 dist/
