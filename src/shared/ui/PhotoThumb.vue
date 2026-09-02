@@ -15,7 +15,7 @@ const initial = computed(() => props.name.trim().charAt(0).toUpperCase());
 </script>
 
 <template>
-  <div :class="cn('flex shrink-0 items-center justify-center overflow-hidden rounded-md bg-bg-muted', props.class)">
+  <div :class="cn('flex shrink-0 items-center justify-center overflow-hidden rounded-md bg-muted', props.class)">
     <img
       v-if="src && !failed"
       :src="src"
@@ -24,6 +24,6 @@ const initial = computed(() => props.name.trim().charAt(0).toUpperCase());
       class="size-full object-cover"
       @error="failed = true"
     >
-    <span v-else class="text-sm font-medium text-text-tertiary">{{ initial }}</span>
+    <span v-else class="text-sm font-medium text-muted-foreground">{{ initial }}</span>
   </div>
 </template>

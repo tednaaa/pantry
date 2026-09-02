@@ -124,12 +124,12 @@ function openNewProduct() {
       </Button>
     </header>
 
-    <div class="flex shrink-0 items-center gap-2 border-b border-border-default pb-3 pl-4">
+    <div class="flex shrink-0 items-center gap-2 border-b border-border pb-3 pl-4">
       <DropdownMenu>
         <DropdownMenuTrigger as-child>
           <button
             type="button"
-            class="flex size-9 shrink-0 items-center justify-center rounded-full border border-border-default text-text-secondary"
+            class="flex size-9 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground"
             :aria-label="`Вид: ${viewModeName(view)}`"
           >
             <component :is="viewIcon" class="size-4" />
@@ -155,8 +155,8 @@ function openNewProduct() {
             :class="cn(
               'rounded-full border px-3 py-1.5 text-xs whitespace-nowrap',
               chip === item.id
-                ? 'border-transparent bg-bg-brand text-text-inverse'
-                : 'border-border-default text-text-secondary',
+                ? 'border-transparent bg-primary text-primary-foreground'
+                : 'border-border text-muted-foreground',
             )"
             @click="chip = item.id"
           >
@@ -168,7 +168,7 @@ function openNewProduct() {
 
     <div class="min-h-0 flex-1 overflow-y-auto px-4 pt-4 pb-6">
       <template v-if="showsFrequent">
-        <h2 class="pb-2 text-xs font-medium tracking-wide text-text-tertiary uppercase">
+        <h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
           Часто
         </h2>
 
@@ -181,7 +181,7 @@ function openNewProduct() {
       </template>
 
       <template v-if="dishes.length">
-        <h2 class="pb-2 text-xs font-medium tracking-wide text-text-tertiary uppercase">
+        <h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
           Блюда
         </h2>
 
@@ -189,7 +189,7 @@ function openNewProduct() {
       </template>
 
       <template v-if="custom.length">
-        <h2 class="pb-2 text-xs font-medium tracking-wide text-text-tertiary uppercase">
+        <h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
           Своё
         </h2>
 
@@ -197,7 +197,7 @@ function openNewProduct() {
       </template>
 
       <template v-for="group in groups" :key="group.id">
-        <h2 class="pb-2 text-xs font-medium tracking-wide text-text-tertiary uppercase">
+        <h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
           {{ group.name }}
         </h2>
 
@@ -210,7 +210,7 @@ function openNewProduct() {
       </template>
 
       <div v-if="isEmpty" class="py-8 text-center">
-        <p class="text-sm text-text-secondary">
+        <p class="text-sm text-muted-foreground">
           Ничего не нашлось
         </p>
 

@@ -18,16 +18,16 @@ const emit = defineEmits<{
     <button
       v-if="!props.qty"
       type="button"
-      class="flex h-9 items-center rounded-full border border-border-default px-3 text-sm text-text-secondary first-letter:uppercase"
+      class="flex h-9 items-center rounded-full border border-border px-3 text-sm text-muted-foreground first-letter:uppercase"
       @click="emit('changeQty', 1)"
     >
       {{ product.name }}
     </button>
 
-    <div v-else class="flex h-9 items-center gap-0.5 rounded-full bg-bg-brand-subtle p-1 text-sm text-text-primary">
+    <div v-else class="flex h-9 items-center gap-0.5 rounded-full bg-primary/10 p-1 text-sm text-foreground">
       <button
         type="button"
-        class="flex size-7 items-center justify-center rounded-full text-text-secondary"
+        class="flex size-7 items-center justify-center rounded-full text-muted-foreground"
         :aria-label="`Убрать ${product.name}`"
         @click="emit('changeQty', decreaseQty(props.qty))"
       >
@@ -40,7 +40,7 @@ const emit = defineEmits<{
 
       <button
         type="button"
-        class="flex size-7 items-center justify-center rounded-full text-text-secondary"
+        class="flex size-7 items-center justify-center rounded-full text-muted-foreground"
         :aria-label="`Добавить ${product.name}`"
         @click="emit('changeQty', increaseQty(props.qty))"
       >

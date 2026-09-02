@@ -44,7 +44,7 @@ function change(next: number) {
     <header class="flex shrink-0 items-center gap-2 px-2 pt-4 pb-2">
       <button
         type="button"
-        class="flex size-9 items-center justify-center rounded-full text-text-secondary"
+        class="flex size-9 items-center justify-center rounded-full text-muted-foreground"
         aria-label="Назад"
         @click="router.back()"
       >
@@ -53,7 +53,7 @@ function change(next: number) {
     </header>
 
     <div v-if="!dish" class="min-h-0 flex-1 overflow-y-auto px-4 py-8 text-center">
-      <p class="text-sm text-text-secondary">
+      <p class="text-sm text-muted-foreground">
         Такого блюда нет в каталоге
       </p>
 
@@ -65,7 +65,7 @@ function change(next: number) {
     <div v-else class="min-h-0 flex-1 overflow-y-auto px-4 pb-8">
       <PhotoThumb :src="photoUrl(dish)" :name="dish.name" class="aspect-video w-full rounded-xl" />
 
-      <h1 class="pt-4 text-xl font-semibold text-text-primary first-letter:uppercase">
+      <h1 class="pt-4 text-xl font-semibold text-foreground first-letter:uppercase">
         {{ dish.name }}
       </h1>
 
@@ -79,21 +79,21 @@ function change(next: number) {
         </Button>
 
         <template v-else>
-          <div class="flex h-9 flex-1 items-center justify-between rounded-full bg-bg-brand-subtle px-1">
+          <div class="flex h-9 flex-1 items-center justify-between rounded-full bg-primary/10 px-1">
             <button
               type="button"
-              class="flex size-7 items-center justify-center rounded-full text-text-secondary"
+              class="flex size-7 items-center justify-center rounded-full text-muted-foreground"
               aria-label="Готовим меньше"
               @click="change(decreaseQty(qty))"
             >
               <MinusIcon class="size-4" />
             </button>
 
-            <span class="text-sm tabular-nums text-text-primary">готовим {{ qty }}×</span>
+            <span class="text-sm tabular-nums text-foreground">готовим {{ qty }}×</span>
 
             <button
               type="button"
-              class="flex size-7 items-center justify-center rounded-full text-text-secondary"
+              class="flex size-7 items-center justify-center rounded-full text-muted-foreground"
               aria-label="Готовим больше"
               @click="change(increaseQty(qty))"
             >
@@ -102,12 +102,12 @@ function change(next: number) {
           </div>
         </template>
 
-        <span class="shrink-0 text-sm tabular-nums text-text-tertiary">{{ formatServings(servings) }}</span>
+        <span class="shrink-0 text-sm tabular-nums text-muted-foreground">{{ formatServings(servings) }}</span>
       </div>
 
       <Separator class="my-6" />
 
-      <h2 class="pb-2 text-xs font-medium tracking-wide text-text-tertiary uppercase">
+      <h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
         Состав
       </h2>
 
@@ -117,12 +117,12 @@ function change(next: number) {
           :key="ingredient.id"
           class="flex min-h-9 items-center justify-between gap-3 text-sm"
         >
-          <span class="min-w-0 flex-1 text-text-primary first-letter:uppercase">
+          <span class="min-w-0 flex-1 text-foreground first-letter:uppercase">
             {{ ingredient.name }}
-            <span v-if="ingredient.note" class="text-text-tertiary">({{ ingredient.note }})</span>
+            <span v-if="ingredient.note" class="text-muted-foreground">({{ ingredient.note }})</span>
           </span>
 
-          <span v-if="ingredient.amount" class="shrink-0 tabular-nums text-text-tertiary">
+          <span v-if="ingredient.amount" class="shrink-0 tabular-nums text-muted-foreground">
             {{ ingredient.amount }}
           </span>
         </li>
@@ -131,11 +131,11 @@ function change(next: number) {
       <template v-if="dish.steps?.length">
         <Separator class="my-6" />
 
-        <h2 class="pb-2 text-xs font-medium tracking-wide text-text-tertiary uppercase">
+        <h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
           Как готовить
         </h2>
 
-        <ol class="flex list-inside list-decimal flex-col gap-2 text-sm text-text-secondary marker:text-text-tertiary marker:tabular-nums">
+        <ol class="flex list-inside list-decimal flex-col gap-2 text-sm text-muted-foreground marker:text-muted-foreground marker:tabular-nums">
           <li v-for="step in dish.steps" :key="step">{{ step }}</li>
         </ol>
       </template>

@@ -22,7 +22,7 @@ const note = defineModel<string>('note', { required: true });
           {{ option.name }}
         </NativeSelectOption>
       </NativeSelect>
-      <p class="text-xs text-text-tertiary">
+      <p class="text-xs text-muted-foreground">
         Определяет, в какой группе списка встанет продукт.
       </p>
     </div>
@@ -35,7 +35,7 @@ const note = defineModel<string>('note', { required: true });
           {{ option }}
         </NativeSelectOption>
       </NativeSelect>
-      <p class="text-xs text-text-tertiary">
+      <p class="text-xs text-muted-foreground">
         Нужна, только если продукт попадает в состав блюда. Иначе в списке хватит счётчика штук.
       </p>
     </div>

@@ -15,20 +15,20 @@ const products = useCustomProducts();
     <header class="flex shrink-0 items-center gap-1 px-2 pt-4 pb-2">
       <button
         type="button"
-        class="flex size-9 items-center justify-center rounded-full text-text-secondary"
+        class="flex size-9 items-center justify-center rounded-full text-muted-foreground"
         aria-label="Назад"
         @click="router.back()"
       >
         <ChevronLeftIcon class="size-5" />
       </button>
 
-      <h1 class="text-xl font-semibold text-text-primary">
+      <h1 class="text-xl font-semibold text-foreground">
         Свои продукты
       </h1>
     </header>
 
     <div class="min-h-0 flex-1 overflow-y-auto px-4 pt-2 pb-8">
-      <p class="pb-4 text-xs text-text-tertiary">
+      <p class="pb-4 text-xs text-muted-foreground">
         То, что покупается изредка и не заслуживает коммита в каталог. Блюда так не заводятся — их состав
         живёт в репозитории.
       </p>
@@ -37,13 +37,13 @@ const products = useCustomProducts();
         <li v-for="product in products" :key="product.id">
           <RouterLink
             :to="`/settings/products/${product.id}`"
-            class="flex min-h-12 items-center justify-between gap-3 border-b border-border-default"
+            class="flex min-h-12 items-center justify-between gap-3 border-b border-border"
           >
-            <span class="min-w-0 flex-1 truncate text-sm text-text-primary first-letter:uppercase">
+            <span class="min-w-0 flex-1 truncate text-sm text-foreground first-letter:uppercase">
               {{ product.name }}
             </span>
 
-            <span class="flex shrink-0 items-center gap-1 text-sm text-text-tertiary">
+            <span class="flex shrink-0 items-center gap-1 text-sm text-muted-foreground">
               {{ categoryName(product.category) }}
               <ChevronRightIcon class="size-4" />
             </span>
@@ -51,7 +51,7 @@ const products = useCustomProducts();
         </li>
       </ul>
 
-      <p v-else class="py-8 text-center text-sm text-text-secondary">
+      <p v-else class="py-8 text-center text-sm text-muted-foreground">
         Пока ничего не заведено
       </p>
 

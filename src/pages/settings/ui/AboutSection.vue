@@ -16,8 +16,8 @@ const rows = computed(() => [
 <template>
   <dl class="flex flex-col gap-2">
     <div v-for="row in rows" :key="row.label" class="flex justify-between gap-3 text-sm">
-      <dt class="text-text-secondary">{{ row.label }}</dt>
-      <dd class="tabular-nums text-text-primary">{{ row.value }}</dd>
+      <dt class="text-muted-foreground">{{ row.label }}</dt>
+      <dd class="tabular-nums text-foreground">{{ row.value }}</dd>
     </div>
   </dl>
 </template>

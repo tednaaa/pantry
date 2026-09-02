@@ -76,20 +76,20 @@ function askToRemove() {
     <header class="flex shrink-0 items-center gap-1 px-2 pt-4 pb-2">
       <button
         type="button"
-        class="flex size-9 items-center justify-center rounded-full text-text-secondary"
+        class="flex size-9 items-center justify-center rounded-full text-muted-foreground"
         aria-label="Назад"
         @click="router.back()"
       >
         <ChevronLeftIcon class="size-5" />
       </button>
 
-      <h1 class="text-xl font-semibold text-text-primary">
+      <h1 class="text-xl font-semibold text-foreground">
         Свой продукт
       </h1>
     </header>
 
     <div v-if="!product" class="min-h-0 flex-1 overflow-y-auto px-4 py-8 text-center">
-      <p class="text-sm text-text-secondary">
+      <p class="text-sm text-muted-foreground">
         Такого продукта больше нет
       </p>
 

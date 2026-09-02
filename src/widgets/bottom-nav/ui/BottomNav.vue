@@ -24,7 +24,7 @@ const badges = computed<Record<string, number>>(() => ({ '/list': plan.value.len
 </script>
 
 <template>
-  <nav class="border-t border-border-default bg-bg-surface pb-[env(safe-area-inset-bottom)]">
+  <nav class="border-t border-border bg-background pb-[env(safe-area-inset-bottom)]">
     <ul class="grid grid-cols-3">
       <li v-for="item in items" :key="item.to">
         <RouterLink #default="{ href, navigate, isExactActive }" :to="item.to" custom>
@@ -32,7 +32,7 @@ const badges = computed<Record<string, number>>(() => ({ '/list': plan.value.len
             :href="href"
             :class="cn(
               'flex min-h-14 flex-col items-center justify-center gap-1 text-[11px] transition-colors',
-              isExactActive ? 'text-text-brand' : 'text-text-secondary',
+              isExactActive ? 'text-primary' : 'text-muted-foreground',
             )"
             @click="navigate"
           >
@@ -41,7 +41,7 @@ const badges = computed<Record<string, number>>(() => ({ '/list': plan.value.len
 
               <span
                 v-if="badges[item.to]"
-                class="absolute -top-1.5 -right-2.5 min-w-4 rounded-full bg-bg-brand px-1 text-[10px] leading-4 font-medium text-text-inverse tabular-nums"
+                class="absolute -top-1.5 -right-2.5 min-w-4 rounded-full bg-primary px-1 text-[10px] leading-4 font-medium text-primary-foreground tabular-nums"
               >
                 {{ badges[item.to] }}
               </span>

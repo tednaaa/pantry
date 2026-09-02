@@ -30,40 +30,40 @@ const servings = computed(() => formatServings(props.dish.servings * Math.max(pr
       <PhotoThumb
         :src="photoUrl(dish)"
         :name="dish.name"
-        :class="cn('aspect-square w-full rounded-xl', props.qty && 'ring-2 ring-border-brand')"
+        :class="cn('aspect-square w-full rounded-xl', props.qty && 'ring-2 ring-ring')"
       />
 
-      <p class="line-clamp-2 text-xs leading-tight text-text-primary first-letter:uppercase">
+      <p class="line-clamp-2 text-xs leading-tight text-foreground first-letter:uppercase">
         {{ dish.name }}
       </p>
     </button>
 
     <div class="flex items-baseline justify-between gap-2">
-      <span class="text-[11px] tabular-nums text-text-tertiary">{{ servings }}</span>
+      <span class="text-[11px] tabular-nums text-muted-foreground">{{ servings }}</span>
 
-      <RouterLink :to="`/dish/${dish.id}`" class="shrink-0 text-[11px] text-text-brand">
+      <RouterLink :to="`/dish/${dish.id}`" class="shrink-0 text-[11px] text-primary">
         Состав
       </RouterLink>
     </div>
 
     <div
       v-if="props.qty"
-      class="absolute inset-x-0 top-0 flex h-9 items-center rounded-t-xl bg-bg-surface/90 backdrop-blur"
+      class="absolute inset-x-0 top-0 flex h-9 items-center rounded-t-xl bg-background/90 backdrop-blur"
     >
       <button
         type="button"
-        class="flex h-full flex-1 items-center justify-center text-text-secondary"
+        class="flex h-full flex-1 items-center justify-center text-muted-foreground"
         :aria-label="`Убрать ${dish.name}`"
         @click="emit('changeQty', decreaseQty(props.qty))"
       >
         <MinusIcon class="size-4" />
       </button>
 
-      <span class="w-9 text-center text-sm font-medium tabular-nums text-text-primary">{{ props.qty }}</span>
+      <span class="w-9 text-center text-sm font-medium tabular-nums text-foreground">{{ props.qty }}</span>
 
       <button
         type="button"
-        class="flex h-full flex-1 items-center justify-center text-text-secondary"
+        class="flex h-full flex-1 items-center justify-center text-muted-foreground"
         :aria-label="`Добавить ${dish.name}`"
         @click="emit('changeQty', increaseQty(props.qty))"
       >

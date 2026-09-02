@@ -61,14 +61,14 @@ function askToClear() {
 <template>
   <main class="flex min-h-0 flex-1 flex-col">
     <header class="flex shrink-0 items-baseline justify-between gap-3 px-4 pt-6 pb-3">
-      <h1 class="text-xl font-semibold text-text-primary">
+      <h1 class="text-xl font-semibold text-foreground">
         Список
       </h1>
 
       <button
         v-if="done"
         type="button"
-        class="shrink-0 text-xs text-text-brand"
+        class="shrink-0 text-xs text-primary"
         @click="clearChecks()"
       >
         Снять отметки
@@ -76,7 +76,7 @@ function askToClear() {
     </header>
 
     <div v-if="!total" class="min-h-0 flex-1 overflow-y-auto px-4 py-8 text-center">
-      <p class="text-sm text-text-secondary">
+      <p class="text-sm text-muted-foreground">
         План пуст — выбери блюда и продукты, и список соберётся сам.
       </p>
 
@@ -86,7 +86,7 @@ function askToClear() {
     </div>
 
     <div v-else class="min-h-0 flex-1 overflow-y-auto px-4 pb-6">
-      <p class="pb-4 text-xs tabular-nums text-text-tertiary">
+      <p class="pb-4 text-xs tabular-nums text-muted-foreground">
         {{ summary }}
       </p>
 
@@ -108,7 +108,7 @@ function askToClear() {
       </div>
 
       <section v-for="group in groups" :key="group.category" class="pb-6">
-        <h2 class="pb-2 text-xs font-medium tracking-wide text-text-tertiary uppercase">
+        <h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
           {{ group.name }}
         </h2>
 
@@ -122,13 +122,13 @@ function askToClear() {
 
               <span
                 class="min-w-0 flex-1 text-sm first-letter:uppercase"
-                :class="checked.has(item.id) ? 'text-text-tertiary line-through' : 'text-text-primary'"
+                :class="checked.has(item.id) ? 'text-muted-foreground line-through' : 'text-foreground'"
               >
                 {{ item.name }}
-                <span v-if="item.note" class="text-text-tertiary">({{ item.note }})</span>
+                <span v-if="item.note" class="text-muted-foreground">({{ item.note }})</span>
               </span>
 
-              <span v-if="item.amount" class="shrink-0 text-sm tabular-nums text-text-tertiary">
+              <span v-if="item.amount" class="shrink-0 text-sm tabular-nums text-muted-foreground">
                 {{ item.amount }}
               </span>
             </label>
@@ -138,7 +138,7 @@ function askToClear() {
     </div>
 
     <Teleport defer to="#bottom-dock">
-      <div v-if="total" class="flex gap-3 border-t border-border-default bg-bg-surface px-4 py-3">
+      <div v-if="total" class="flex gap-3 border-t border-border bg-background px-4 py-3">
         <Button class="flex-1" @click="copyList">
           <CopyIcon class="size-4" />
           Скопировать

@@ -19,11 +19,11 @@ const summary = computed(() => {
 <template>
   <RouterLink
     to="/settings/products"
-    class="flex min-h-11 items-center justify-between gap-3 rounded-lg border border-border-default px-4 py-3"
+    class="flex min-h-11 items-center justify-between gap-3 rounded-lg border border-border px-4 py-3"
   >
-    <span class="text-sm text-text-primary">Список</span>
+    <span class="text-sm text-foreground">Список</span>
 
-    <span class="flex items-center gap-1 text-sm text-text-tertiary">
+    <span class="flex items-center gap-1 text-sm text-muted-foreground">
       {{ summary }}
       <ChevronRightIcon class="size-4" />
     </span>
