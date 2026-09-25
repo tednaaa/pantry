@@ -119,7 +119,7 @@ function openNewProduct() {
         class="flex-1"
       />
 
-      <Button variant="outline" @click="openNewProduct">
+      <Button variant="secondary" @click="openNewProduct">
         Новое
       </Button>
     </header>
@@ -214,7 +214,7 @@ function openNewProduct() {
           Ничего не нашлось
         </p>
 
-        <Button variant="outline" class="mt-3" @click="openNewProduct">
+        <Button variant="secondary" class="mt-3" @click="openNewProduct">
           Добавить своё
         </Button>
       </div>

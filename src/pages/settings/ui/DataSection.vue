@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Backup, BackupMode } from '@/shared/db';
-import { Button, downloadFile, toast, useConfirm } from 'shonk-ui';
+import { Button, downloadBlob, toast, useConfirm } from 'shonk-ui';
 import { ref, useTemplateRef } from 'vue';
 import {
   applyBackup,
@@ -20,7 +20,7 @@ const busy = ref(false);
 async function saveToFile() {
   const backup = await collectBackup();
 
-  downloadFile(new Blob([JSON.stringify(backup)], { type: 'application/json' }), backupFileName());
+  downloadBlob(new Blob([JSON.stringify(backup)], { type: 'application/json' }), backupFileName());
 }
 
 async function pickFile(event: Event) {
@@ -66,6 +66,7 @@ function askToWipe() {
   confirmation.require({
     message: 'План, отметки о покупках и свои продукты будут стёрты с этого телефона. Данные хранятся только здесь, восстановить их будет неоткуда — если копия ещё не выгружена, сначала сделай её.',
     acceptButtonText: 'Стереть',
+    acceptButtonVariant: 'destructive',
     accept: () => {
       void wipeAllData();
     },
@@ -75,11 +76,11 @@ function askToWipe() {
 
 <template>
   <div class="flex flex-col gap-3">
-    <Button type="button" variant="outline" @click="saveToFile">
+    <Button type="button" variant="secondary" @click="saveToFile">
       Выгрузить копию
     </Button>
 
-    <Button type="button" variant="outline" @click="picker?.click()">
+    <Button type="button" variant="secondary" @click="picker?.click()">
       Загрузить копию
     </Button>
 

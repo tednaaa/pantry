@@ -51,6 +51,7 @@ function askToClear() {
   confirmation.require({
     message: 'План и отметки о покупках будут стёрты. Каталог блюд и свои продукты останутся на месте.',
     acceptButtonText: 'Очистить',
+    acceptButtonVariant: 'destructive',
     accept: () => {
       void clearPlan();
     },
@@ -80,7 +81,7 @@ function askToClear() {
         План пуст — выбери блюда и продукты, и список соберётся сам.
       </p>
 
-      <Button variant="outline" class="mt-3" @click="router.push('/')">
+      <Button variant="secondary" class="mt-3" @click="router.push('/')">
         Собрать план
       </Button>
     </div>
@@ -144,7 +145,7 @@ function askToClear() {
           Скопировать
         </Button>
 
-        <Button variant="outline" @click="askToClear">
+        <Button variant="secondary" @click="askToClear">
           Очистить
         </Button>
       </div>

@@ -57,7 +57,7 @@ function change(next: number) {
         Такого блюда нет в каталоге
       </p>
 
-      <Button variant="outline" class="mt-3" @click="router.push('/')">
+      <Button variant="secondary" class="mt-3" @click="router.push('/')">
         К плану
       </Button>
     </div>

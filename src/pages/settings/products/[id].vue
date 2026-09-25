@@ -64,6 +64,7 @@ function askToRemove() {
   confirmation.require({
     message: 'Продукт исчезнет и из своих продуктов, и из текущего плана. Каталог и блюда не изменятся.',
     acceptButtonText: 'Удалить',
+    acceptButtonVariant: 'destructive',
     accept: () => {
       void remove();
     },
@@ -93,7 +94,7 @@ function askToRemove() {
         Такого продукта больше нет
       </p>
 
-      <Button variant="outline" class="mt-3" @click="router.push('/settings/products')">
+      <Button variant="secondary" class="mt-3" @click="router.push('/settings/products')">
         К списку
       </Button>
     </div>
