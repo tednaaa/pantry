@@ -8,16 +8,16 @@ useColorMode();
 </script>
 
 <template>
-  <div class="mx-auto flex h-full w-full max-w-md flex-col overflow-hidden bg-background pt-[env(safe-area-inset-top)]">
-    <RouterView />
+	<div class="mx-auto flex h-full w-full max-w-md flex-col overflow-hidden bg-background pt-[env(safe-area-inset-top)]">
+		<RouterView />
 
-    <div class="shrink-0">
-      <div id="bottom-dock" />
+		<div class="shrink-0">
+			<div id="bottom-dock" />
 
-      <BottomNav />
-    </div>
-  </div>
+			<BottomNav />
+		</div>
+	</div>
 
-  <ConfirmDialog />
-  <Toaster />
+	<ConfirmDialog />
+	<Toaster />
 </template>

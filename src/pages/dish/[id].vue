@@ -21,124 +21,124 @@ const qty = computed(() => (dish.value ? qtyOf(items.value, 'dish', dish.value.i
 const servings = computed(() => (dish.value ? dish.value.servings * Math.max(qty.value, 1) : 0));
 
 const composition = computed(() => dish.value?.ingredients.map((ingredient) => {
-  const product = productById(ingredient.product);
-  const scaled = (ingredient.amount ?? 0) * Math.max(qty.value, 1);
+	const product = productById(ingredient.product);
+	const scaled = (ingredient.amount ?? 0) * Math.max(qty.value, 1);
 
-  return {
-    id: ingredient.product,
-    name: product?.name ?? ingredient.product,
-    note: product?.note,
-    amount: scaled && product?.unit ? formatAmount(scaled, product.unit) : '',
-  };
+	return {
+		id: ingredient.product,
+		name: product?.name ?? ingredient.product,
+		note: product?.note,
+		amount: scaled && product?.unit ? formatAmount(scaled, product.unit) : '',
+	};
 }) ?? []);
 
 function change(next: number) {
-  if (dish.value) {
-    void setQty('dish', dish.value.id, next);
-  }
+	if (dish.value) {
+		void setQty('dish', dish.value.id, next);
+	}
 }
 </script>
 
 <template>
-  <main class="flex min-h-0 flex-1 flex-col">
-    <header class="flex shrink-0 items-center gap-2 px-2 pt-4 pb-2">
-      <button
-        type="button"
-        class="flex size-9 items-center justify-center rounded-full text-muted-foreground"
-        aria-label="Назад"
-        @click="router.back()"
-      >
-        <ChevronLeftIcon class="size-5" />
-      </button>
-    </header>
+	<main class="flex min-h-0 flex-1 flex-col">
+		<header class="flex shrink-0 items-center gap-2 px-2 pt-4 pb-2">
+			<button
+				type="button"
+				class="flex size-9 items-center justify-center rounded-full text-muted-foreground"
+				aria-label="Назад"
+				@click="router.back()"
+			>
+				<ChevronLeftIcon class="size-5" />
+			</button>
+		</header>
 
-    <div v-if="!dish" class="min-h-0 flex-1 overflow-y-auto px-4 py-8 text-center">
-      <p class="text-sm text-muted-foreground">
-        Такого блюда нет в каталоге
-      </p>
+		<div v-if="!dish" class="min-h-0 flex-1 overflow-y-auto px-4 py-8 text-center">
+			<p class="text-sm text-muted-foreground">
+				Такого блюда нет в каталоге
+			</p>
 
-      <Button variant="secondary" class="mt-3" @click="router.push('/')">
-        К плану
-      </Button>
-    </div>
+			<Button variant="secondary" class="mt-3" @click="router.push('/')">
+				К плану
+			</Button>
+		</div>
 
-    <div v-else class="min-h-0 flex-1 overflow-y-auto px-4 pb-8">
-      <PhotoThumb :src="photoUrl(dish)" :name="dish.name" class="aspect-video w-full rounded-xl" />
+		<div v-else class="min-h-0 flex-1 overflow-y-auto px-4 pb-8">
+			<PhotoThumb :src="photoUrl(dish)" :name="dish.name" class="aspect-video w-full rounded-xl" />
 
-      <h1 class="pt-4 text-xl font-semibold text-foreground first-letter:uppercase">
-        {{ dish.name }}
-      </h1>
+			<h1 class="pt-4 text-xl font-semibold text-foreground first-letter:uppercase">
+				{{ dish.name }}
+			</h1>
 
-      <div class="flex flex-wrap gap-1.5 pt-2">
-        <Badge v-for="tag in dish.tags" :key="tag" variant="secondary">{{ tag }}</Badge>
-      </div>
+			<div class="flex flex-wrap gap-1.5 pt-2">
+				<Badge v-for="tag in dish.tags" :key="tag" variant="secondary">{{ tag }}</Badge>
+			</div>
 
-      <div class="flex items-center gap-3 pt-5">
-        <Button v-if="!qty" class="flex-1" @click="change(1)">
-          Добавить в план
-        </Button>
+			<div class="flex items-center gap-3 pt-5">
+				<Button v-if="!qty" class="flex-1" @click="change(1)">
+					Добавить в план
+				</Button>
 
-        <template v-else>
-          <div class="flex h-9 flex-1 items-center justify-between rounded-full bg-primary/10 px-1">
-            <button
-              type="button"
-              class="flex size-7 items-center justify-center rounded-full text-muted-foreground"
-              aria-label="Готовим меньше"
-              @click="change(decreaseQty(qty))"
-            >
-              <MinusIcon class="size-4" />
-            </button>
+				<template v-else>
+					<div class="flex h-9 flex-1 items-center justify-between rounded-full bg-primary/10 px-1">
+						<button
+							type="button"
+							class="flex size-7 items-center justify-center rounded-full text-muted-foreground"
+							aria-label="Готовим меньше"
+							@click="change(decreaseQty(qty))"
+						>
+							<MinusIcon class="size-4" />
+						</button>
 
-            <span class="text-sm tabular-nums text-foreground">готовим {{ qty }}×</span>
+						<span class="text-sm tabular-nums text-foreground">готовим {{ qty }}×</span>
 
-            <button
-              type="button"
-              class="flex size-7 items-center justify-center rounded-full text-muted-foreground"
-              aria-label="Готовим больше"
-              @click="change(increaseQty(qty))"
-            >
-              <PlusIcon class="size-4" />
-            </button>
-          </div>
-        </template>
+						<button
+							type="button"
+							class="flex size-7 items-center justify-center rounded-full text-muted-foreground"
+							aria-label="Готовим больше"
+							@click="change(increaseQty(qty))"
+						>
+							<PlusIcon class="size-4" />
+						</button>
+					</div>
+				</template>
 
-        <span class="shrink-0 text-sm tabular-nums text-muted-foreground">{{ formatServings(servings) }}</span>
-      </div>
+				<span class="shrink-0 text-sm tabular-nums text-muted-foreground">{{ formatServings(servings) }}</span>
+			</div>
 
-      <Separator class="my-6" />
+			<Separator class="my-6" />
 
-      <h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
-        Состав
-      </h2>
+			<h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+				Состав
+			</h2>
 
-      <ul class="flex flex-col">
-        <li
-          v-for="ingredient in composition"
-          :key="ingredient.id"
-          class="flex min-h-9 items-center justify-between gap-3 text-sm"
-        >
-          <span class="min-w-0 flex-1 text-foreground first-letter:uppercase">
-            {{ ingredient.name }}
-            <span v-if="ingredient.note" class="text-muted-foreground">({{ ingredient.note }})</span>
-          </span>
+			<ul class="flex flex-col">
+				<li
+					v-for="ingredient in composition"
+					:key="ingredient.id"
+					class="flex min-h-9 items-center justify-between gap-3 text-sm"
+				>
+					<span class="min-w-0 flex-1 text-foreground first-letter:uppercase">
+						{{ ingredient.name }}
+						<span v-if="ingredient.note" class="text-muted-foreground">({{ ingredient.note }})</span>
+					</span>
 
-          <span v-if="ingredient.amount" class="shrink-0 tabular-nums text-muted-foreground">
-            {{ ingredient.amount }}
-          </span>
-        </li>
-      </ul>
+					<span v-if="ingredient.amount" class="shrink-0 tabular-nums text-muted-foreground">
+						{{ ingredient.amount }}
+					</span>
+				</li>
+			</ul>
 
-      <template v-if="dish.steps?.length">
-        <Separator class="my-6" />
+			<template v-if="dish.steps?.length">
+				<Separator class="my-6" />
 
-        <h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
-          Как готовить
-        </h2>
+				<h2 class="pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+					Как готовить
+				</h2>
 
-        <ol class="flex list-inside list-decimal flex-col gap-2 text-sm text-muted-foreground marker:text-muted-foreground marker:tabular-nums">
-          <li v-for="step in dish.steps" :key="step">{{ step }}</li>
-        </ol>
-      </template>
-    </div>
-  </main>
+				<ol class="flex list-inside list-decimal flex-col gap-2 text-sm text-muted-foreground marker:text-muted-foreground marker:tabular-nums">
+					<li v-for="step in dish.steps" :key="step">{{ step }}</li>
+				</ol>
+			</template>
+		</div>
+	</main>
 </template>

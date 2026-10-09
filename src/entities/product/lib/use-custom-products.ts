@@ -4,5 +4,5 @@ import { useLiveQuery } from '@/shared/lib';
 import { listCustomProducts } from './custom-product';
 
 export function useCustomProducts(): Ref<CustomProduct[]> {
-  return useLiveQuery<CustomProduct[]>(() => listCustomProducts(), []);
+	return useLiveQuery<CustomProduct[]>(() => listCustomProducts(), []);
 }

@@ -7,54 +7,54 @@ import { photoUrl } from '@/entities/product';
 import { PhotoThumb } from '@/shared/ui';
 
 const props = defineProps<{
-  product: Product;
-  qty: number;
+	product: Product;
+	qty: number;
 }>();
 
 const emit = defineEmits<{
-  changeQty: [qty: number];
+	changeQty: [qty: number];
 }>();
 </script>
 
 <template>
-  <li class="flex items-center gap-2 border-b border-border last:border-b-0">
-    <button
-      type="button"
-      class="flex min-w-0 flex-1 items-center gap-3 py-2 text-left"
-      @click="emit('changeQty', toggleQty(props.qty))"
-    >
-      <PhotoThumb
-        :src="photoUrl(product)"
-        :name="product.name"
-        :class="cn('size-11 rounded-lg', props.qty && 'ring-2 ring-ring')"
-      />
+	<li class="flex items-center gap-2 border-b border-border last:border-b-0">
+		<button
+			type="button"
+			class="flex min-w-0 flex-1 items-center gap-3 py-2 text-left"
+			@click="emit('changeQty', toggleQty(props.qty))"
+		>
+			<PhotoThumb
+				:src="photoUrl(product)"
+				:name="product.name"
+				:class="cn('size-11 rounded-lg', props.qty && 'ring-2 ring-ring')"
+			/>
 
-      <span class="min-w-0 flex-1">
-        <span class="block truncate text-sm text-foreground first-letter:uppercase">{{ product.name }}</span>
-        <span v-if="product.note" class="block text-xs text-muted-foreground">{{ product.note }}</span>
-      </span>
-    </button>
+			<span class="min-w-0 flex-1">
+				<span class="block truncate text-sm text-foreground first-letter:uppercase">{{ product.name }}</span>
+				<span v-if="product.note" class="block text-xs text-muted-foreground">{{ product.note }}</span>
+			</span>
+		</button>
 
-    <div v-if="props.qty" class="flex shrink-0 items-center">
-      <button
-        type="button"
-        class="flex size-9 items-center justify-center text-muted-foreground"
-        :aria-label="`Убрать ${product.name}`"
-        @click="emit('changeQty', decreaseQty(props.qty))"
-      >
-        <MinusIcon class="size-4" />
-      </button>
+		<div v-if="props.qty" class="flex shrink-0 items-center">
+			<button
+				type="button"
+				class="flex size-9 items-center justify-center text-muted-foreground"
+				:aria-label="`Убрать ${product.name}`"
+				@click="emit('changeQty', decreaseQty(props.qty))"
+			>
+				<MinusIcon class="size-4" />
+			</button>
 
-      <span class="w-6 text-center text-sm font-medium tabular-nums text-foreground">{{ props.qty }}</span>
+			<span class="w-6 text-center text-sm font-medium tabular-nums text-foreground">{{ props.qty }}</span>
 
-      <button
-        type="button"
-        class="flex size-9 items-center justify-center text-muted-foreground"
-        :aria-label="`Добавить ${product.name}`"
-        @click="emit('changeQty', increaseQty(props.qty))"
-      >
-        <PlusIcon class="size-4" />
-      </button>
-    </div>
-  </li>
+			<button
+				type="button"
+				class="flex size-9 items-center justify-center text-muted-foreground"
+				:aria-label="`Добавить ${product.name}`"
+				@click="emit('changeQty', increaseQty(props.qty))"
+			>
+				<PlusIcon class="size-4" />
+			</button>
+		</div>
+	</li>
 </template>

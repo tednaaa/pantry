@@ -1,12 +1,12 @@
 export type { Backup, BackupCheck, BackupMode } from './backup';
 export {
-  applyBackup,
-  BACKUP_VERSION,
-  backupFileName,
-  collectBackup,
-  describeBackup,
-  readBackup,
-  wipeAllData,
+	applyBackup,
+	BACKUP_VERSION,
+	backupFileName,
+	collectBackup,
+	describeBackup,
+	readBackup,
+	wipeAllData,
 } from './backup';
 export type { AppDatabase } from './database';
 export { db } from './database';

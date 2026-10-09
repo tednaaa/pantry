@@ -5,17 +5,17 @@ export const tags = ['завтрак', 'обед', 'ужин', 'мясо', 'ры
 export type Tag = typeof tags[number];
 
 export interface Ingredient {
-  product: ProductId;
-  amount?: number;
+	product: ProductId;
+	amount?: number;
 }
 
 export interface Dish {
-  id: string;
-  name: string;
-  photo?: string;
-  tags: Tag[];
-  servings: number;
-  ingredients: Ingredient[];
-  steps?: string[];
-  archived?: boolean;
+	id: string;
+	name: string;
+	photo?: string;
+	tags: Tag[];
+	servings: number;
+	ingredients: Ingredient[];
+	steps?: string[];
+	archived?: boolean;
 }
